@@ -25,16 +25,17 @@ class TravelFeedReader(object):
         self.description = description
         self.reader = FeedReader(feed_path=feed_path)
         self.feed = self.reader.read_feed()
-        self.metadata = metadata_path
+        self.feed_metadata = metadata_path
+        self.metadata = None
         self.travel_feed = None
 
     def process(self):
+        self.read_feed_metadata(metadata_path=self.feed_metadata)
         self.read_feed()
-        self.read_feed_metadata(metadata_path=self.metadata)
         self.save_feed(
             feed=self.travel_feed['metadata'],
             field_names=['title', 'subtitle', 'value', 'description',
-                         'source', 'etag', 'created', 'modified'],
+                         'source', 'etag', 'feed_id', 'created', 'modified'],
             file='{source_data}/travel_{description}_feed_metadata_{date}.csv'.format(
                 source_data=self.source_data,
                 description=self.description,
@@ -44,7 +45,7 @@ class TravelFeedReader(object):
         self.save_feed(
             feed=self.travel_feed['entries'],
             field_names=['id', 'title', 'published', 'source', 'dc_identifier',
-                         'summary', 'links', 'created', 'modified'],
+                         'summary', 'links', 'feed_id', 'created', 'modified'],
             file='{source_data}/travel_{description}_feed_entries_{date}.csv'.format(
                 source_data=self.source_data,
                 date=self.process_date,
@@ -52,7 +53,7 @@ class TravelFeedReader(object):
             )
         )
         self.save_feed(
-            feed=self.metadata,
+            feed=[self.feed_metadata],
             field_names=['identifier', 'title', 'description', 'published', 'publisher_name',
                          'source', 'bureau_code', 'start', 'end', 'modified'],
             file='{source_data}/travel_{description}_feed_{date}.csv'.format(
@@ -72,6 +73,8 @@ class TravelFeedReader(object):
         metadata = self.feed['metadata']
         metadata['created'] = arrow.now().format('YYYY-MM-DD HH:mm:ss')
         metadata['modified'] = arrow.now().format('YYYY-MM-DD HH:mm:ss')
+        metadata['feed_id'] = self.feed_metadata['identifier']
+        self.metadata = metadata
         return [metadata]
 
     def get_parsed_entries(self, entries=None):
@@ -91,6 +94,7 @@ class TravelFeedReader(object):
         parsed_entry['links'] = self.get_parsed_summary_links(value=entry.summary_detail.value)
         parsed_entry['created'] = arrow.now().format('YYYY-MM-DD HH:mm:ss')
         parsed_entry['modified'] = arrow.now().format('YYYY-MM-DD HH:mm:ss')
+        parsed_entry['feed_id'] = self.feed_metadata['identifier']
         return parsed_entry
 
     def parse_summary_detail(self, summary_detail=None):
@@ -155,7 +159,7 @@ class TravelFeedReader(object):
             feed_metadata['identifier'] = metadata['identifier']
             feed_metadata['modified'] = metadata['modified']
             feed_metadata['description'] = metadata['description']
-            self.metadata = [feed_metadata]
+            self.feed_metadata = feed_metadata
 
     def parse_temporal(self, temporal=None):
         start = arrow.get(temporal.split('/')[0]).format('YYYY-MM-DD HH:mm:ss')

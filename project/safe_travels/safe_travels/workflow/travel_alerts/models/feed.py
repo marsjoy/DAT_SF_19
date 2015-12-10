@@ -8,6 +8,9 @@ Base = declarative_base()
 
 class Feed(Base):
     __tablename__ = 'feed'
+    __table_args__ = (
+        PrimaryKeyConstraint('title', 'source')
+    )
 
     identifier = Column(types.VARCHAR(50), index=True)
     title = Column(types.VARCHAR(200), primary_key=True, index=True)
