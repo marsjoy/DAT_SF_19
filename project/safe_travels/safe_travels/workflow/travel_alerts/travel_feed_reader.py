@@ -43,7 +43,7 @@ class TravelFeedReader(object):
         )
         self.save_feed(
             feed=self.travel_feed['entries'],
-            field_names=['id', 'title', 'published', 'dc_identifier',
+            field_names=['id', 'title', 'published', 'source', 'dc_identifier',
                          'summary', 'links', 'created', 'modified'],
             file='{source_data}/travel_{description}_feed_entries_{date}.csv'.format(
                 source_data=self.source_data,
@@ -85,6 +85,7 @@ class TravelFeedReader(object):
         parsed_entry['id'] = entry.id
         parsed_entry['title'] = entry.title
         parsed_entry['published'] = arrow.get(entry.published_parsed).format('YYYY-MM-DD HH:mm:ss')
+        parsed_entry['source'] = entry.link
         parsed_entry['dc_identifier'] = entry.dc_identifier
         parsed_entry['summary'] = self.parse_summary_detail(summary_detail=entry.summary_detail)
         parsed_entry['links'] = self.get_parsed_summary_links(value=entry.summary_detail.value)
