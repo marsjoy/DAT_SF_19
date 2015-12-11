@@ -1,5 +1,5 @@
 CREATE TABLE top_ten_most_dangerous AS
-SELECT ci.country, occurrences, r.rank
+SELECT ci.country, occurrences, ra.rank
 FROM (
   SELECT dc_identifier, occurrences, @dangerRank := @dangerRank + 1 AS rank
   FROM (
