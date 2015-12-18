@@ -64,14 +64,18 @@ http://wesandersonpalettes.tumblr.com/
 * Load colorCode data in database
 * Write Kuler web browser script
 * Load Wes Anderson theme palettes in database
+
 ### Exploration
 * Explore dataset using numpy, pandas, sckikit-image, and open-cv-python
+
 ### Analysis
 * Develop feature vector for theme palettes
+
 ### Modeling
 * Create KNN model
 * Create LASSO model
 * Create hierarchical clustering model
+
 ### Paper
 * Create Outline
 * First draft
@@ -79,8 +83,10 @@ http://wesandersonpalettes.tumblr.com/
 * Second draft
 * Edit second draft
 * Final draft
+
 ### Presentation
 Create slides.js presentation distilling work
+
 ### Website Development
 * Create image upload feature  
 * Create image rating display
