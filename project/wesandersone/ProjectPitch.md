@@ -52,6 +52,9 @@ http://www.dgp.toronto.edu/~donovan/color/colorcomp.pdf
 #### Tutorials
 * Python for Image Manipulation   
 http://www.cs.uregina.ca/Links/class-info/325/PythonPictures/  
+### Blogs
+* Wes Anderson color palettes
+http://wesandersonpalettes.tumblr.com/
 
 ## To Do
 ### Pre-Analysis
