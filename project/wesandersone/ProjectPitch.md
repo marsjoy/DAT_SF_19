@@ -48,11 +48,11 @@ I will leverage the open sources Python modules OpenCV-Python and Scikit-Image t
 ## Resources
 #### Journal Articles
 * Peter O'Donovan, Aseem Agarwala, Aaron Hertzmann. Color Compatibility From Large Datasets. ACM Transactions on Graphics, 2011, 30, 43, (Proc. SIGGRAPH).  
-http://www.dgp.toronto.edu/~donovan/color/colorcomp.pdf
+http://www.dgp.toronto.edu/~donovan/color/colorcomp.pdf  
 #### Tutorials
 * Python for Image Manipulation   
 http://www.cs.uregina.ca/Links/class-info/325/PythonPictures/  
-#### Blogs
+#### Blogs  
 * Wes Anderson color palettes
 http://wesandersonpalettes.tumblr.com/
 
