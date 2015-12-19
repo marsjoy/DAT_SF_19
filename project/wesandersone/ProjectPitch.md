@@ -49,6 +49,8 @@ I will leverage the open sources Python modules OpenCV-Python and Scikit-Image t
 #### Journal Articles
 * Peter O'Donovan, Aseem Agarwala, Aaron Hertzmann. Color Compatibility From Large Datasets. ACM Transactions on Graphics, 2011, 30, 43, (Proc. SIGGRAPH).  
 http://www.dgp.toronto.edu/~donovan/color/colorcomp.pdf  
+* S. Xue, A. Agarwala, J. Dorsey, H. Rushmeier / Learning and Applying Color Styles From Feature Films  
+http://graphics.cs.yale.edu/su/pub/PG13/FilmStyle_1_Submit.pdf
 
 #### Tutorials
 * Python for Image Manipulation   
