@@ -3,6 +3,7 @@
 *.pyc
 extras/
 .idea/
+project/safe_travels/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
